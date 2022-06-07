@@ -1,0 +1,107 @@
+DISK ARM  SCHEDULING ALGORITHM
+
+
+
+
+
+
+29.A program to implement Diskarm-FCFS scheduling algorithm.
+
+#include<stdio.h>
+main ()
+{
+ int a[30],i,x,sum=0,n;
+ printf("enter number of elements:");
+ scanf("%d",&n);
+ printf("enter elements:");
+  for(i=1;i<=n;i++)
+   scanf("%d",&a[i]);
+  for(i=1;i<=n;i++)
+  {
+   if(x<a[i])
+   {
+    sum=sum+(a[i]-x);
+    x=a[i];
+   }
+  }
+  printf("no of cycles=%d",sum);
+}
+
+Output:
+
+"diskarm.c" 19L, 298C written
+[dmgv@LinuxServer ~]$ cc diskarm.c
+[dmgv@LinuxServer ~]$ ./a.out
+enter number of elements:
+
+
+
+
+
+
+
+
+
+
+
+
+30 A program to implement Shortest Seek Time First - Diskarm scheduling algorithm.
+
+
+#include<stdio.h>
+main ()
+{
+int a[30],i,j,x,sum=0,n,t,k,z,y,r,su
+printf("enter starting point");
+scanf("%d",&x);
+printf("enter number of elements:");
+scanf("%d",&n);
+printf("enter elements:");
+for(i=1;i<=n;i++)
+scanf("%d",&a[i]);
+k=1;
+while(k<=n)
+{
+y=999;
+for(i=1;i<=n;i++)
+{
+if(x<a[i])
+{
+z=a[i]-x;
+}
+else
+{
+z=x-a[i];
+}
+if(y>z)
+{
+y=z;
+j=i;
+}
+}
+if(x>a[j])
+sum=sum+(x-a[j]);
+else
+{
+sum=sum+(a[j]-x);
+x=a[j];
+printf("%d\t%d\t%d\n",a[j],sum,x);
+}
+for(r=j;r<=n;r++)
+a[r]=a[r+1];
+k++;
+}
+printf("no of cycles=%d",sum);
+}
+Output:
+
+"sstf.c" 45L, 517C written
+[dmgv@LinuxServer ~]$ cc sstf.c
+[dmgv@LinuxServer ~]$ ./a.out
+enter starting point2
+enter number of elements:3
+enter elements:22 11 10
+10      8       10
+11      9       11
+22      20      22
+no of cycles=20
